@@ -29,4 +29,10 @@ public class CommonFooterLinksSection extends TestBase{
 	
 	@FindBy(xpath="//a[contains(., 'Contact Us')]")
 	WebElement contactUsLink;
+	
+	@FindBy(xpath="//input[@id='newsletter']")
+	WebElement emailFieldForNewsLetterUpdates;
+	
+	@FindBy(xpath="//button[contains(., 'Subscribe')]")
+	WebElement subscribeButton;
 }
