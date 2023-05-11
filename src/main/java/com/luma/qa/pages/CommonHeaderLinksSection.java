@@ -43,4 +43,9 @@ public class CommonHeaderLinksSection extends TestBase {
 		signInlink.click();
 		return new LoginPage();
 	}
+	
+	public RegistrationPage registrationPageLand() {
+		createNewAccountLink.click();
+		return new RegistrationPage();
+	}
 }
