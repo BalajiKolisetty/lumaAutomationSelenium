@@ -27,7 +27,7 @@ public class CommonHeaderLinksSection extends TestBase {
 	@FindBy(xpath="//input[@id='search']")
 	WebElement productSearchField;
 	
-	@FindBy(xpath="//button[@type='submit']")
+	@FindBy(xpath="//*[@id=\"search_mini_form\"]/div[2]/button")
 	WebElement productSearchButton;
 	
 	@FindBy(xpath="//a[@class='action showcart']")
@@ -87,7 +87,17 @@ public class CommonHeaderLinksSection extends TestBase {
 	
 	public void productSearchButtonIsDisabled() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-		Assert.assertFalse(productSearchButton.isEnabled());		
+		if (productSearchField.getAttribute("value").isEmpty()) {
+			Assert.assertFalse(productSearchButton.isEnabled());
+		}
+	}
+	
+	public void productSearchButtonIsEnabled() {
+		productSearchButtonIsDisabled();
+		productSearchField.sendKeys("shirt");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"search_mini_form\"]/div[2]/button"))).isDisplayed();
+		Assert.assertTrue(productSearchButton.isDisplayed());
 	}
 }
 
