@@ -48,6 +48,11 @@ public class LoginPageTest extends TestBase{
 		commonHeaderLinksSection.productSearchButtonIsDisabled();
 	}
 	
+	@Test
+	public void productSearchButtonEnabledTest() {
+		commonHeaderLinksSection.productSearchButtonIsEnabled();
+	}
+	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
