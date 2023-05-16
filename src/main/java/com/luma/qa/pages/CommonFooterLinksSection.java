@@ -12,8 +12,8 @@ public class CommonFooterLinksSection extends TestBase{
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//a[contains(., 'Selenium Video Courses')]")
-	WebElement seleniumVideoCoursesLink;
+	@FindBy(xpath="//a[contains(., 'Write for us')]")
+	WebElement writeForUsLink;
 	
 	@FindBy(xpath="//a[contains(., 'Search Terms')]")
 	WebElement searchTermsLink;
@@ -21,7 +21,7 @@ public class CommonFooterLinksSection extends TestBase{
 	@FindBy(xpath="//a[contains(., 'Privacy and Cookie Policy')]")
 	WebElement privacyPolicyLink;
 	
-	@FindBy(xpath="//a[@class='action advanced'][contains(., 'Advanced Search')]")
+	@FindBy(xpath="/html/body/div[1]/footer/div/ul/li[3]/a")
 	WebElement advancedSearchLink;
 	
 	@FindBy(xpath="//a[contains(., 'Orders and Returns')]")
@@ -35,4 +35,34 @@ public class CommonFooterLinksSection extends TestBase{
 	
 	@FindBy(xpath="//button[contains(., 'Subscribe')]")
 	WebElement subscribeButton;
+	
+	public WriteForUsPage writeForUsPageLand() {
+		writeForUsLink.click();
+		return new WriteForUsPage();
+	}
+	
+	public SearchTermsPage searchTermsPageLand() {
+		searchTermsLink.click();
+		return new SearchTermsPage();
+	}
+	
+	public PrivacyAndPolicyPage privacyPolicyPageLand() {
+		privacyPolicyLink.click();
+		return new PrivacyAndPolicyPage();
+	}
+	
+	public AdvancedSearchPage advancedSearchPageLand() {
+		advancedSearchLink.click();
+		return new AdvancedSearchPage();
+	}
+	
+	public OrdersAndReturnsPage ordersAndReturnsPageLand() {
+		ordersAndReturnsLink.click();
+		return new OrdersAndReturnsPage();
+	}
+	
+	public ContactUsPage contactUsPageLand() {
+		contactUsLink.click();
+		return new ContactUsPage();
+	}
 }
