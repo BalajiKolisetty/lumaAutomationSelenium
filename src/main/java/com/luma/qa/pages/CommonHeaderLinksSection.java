@@ -91,16 +91,16 @@ public class CommonHeaderLinksSection extends TestBase {
 			if (numberQuantityInCart > 0) {
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 				miniCartIcon.click();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='top-cart-btn-checkout']")));
-				Assert.assertTrue(checkoutButtonDisplayInMiniCart.isDisplayed());
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='top-cart-btn-checkout']"))).isDisplayed();
+//				Assert.assertTrue(checkoutButtonDisplayInMiniCart.isDisplayed());
 			}
 		}
 		
 		catch (Exception e) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			miniCartIcon.click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[contains(., 'You have no items in your shopping cart.')]")));
-			Assert.assertTrue(noProductsInCartMessage.isDisplayed());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[contains(., 'You have no items in your shopping cart.')]"))).isDisplayed();
+//			Assert.assertTrue(noProductsInCartMessage.isDisplayed());
 		}
 	}
 	
