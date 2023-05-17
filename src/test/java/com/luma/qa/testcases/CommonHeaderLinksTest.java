@@ -10,15 +10,16 @@ import com.luma.qa.pages.CommonHeaderLinksSection;
 public class CommonHeaderLinksTest extends TestBase {
 	
 	CommonHeaderLinksSection commonHeaderLinksSection;
+	
 	public CommonHeaderLinksTest() {
 		super();
 	}
 	
 	@BeforeMethod
 	public void setUp() {
-		commonHeaderLinksSection = new CommonHeaderLinksSection(); 
+		initialization();
+		commonHeaderLinksSection = new CommonHeaderLinksSection();
 	}
-	
 	
 	@Test
 	public void miniCartTest() {
