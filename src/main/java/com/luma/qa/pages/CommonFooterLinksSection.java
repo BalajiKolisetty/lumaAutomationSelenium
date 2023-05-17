@@ -1,8 +1,14 @@
 package com.luma.qa.pages;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.luma.qa.base.TestBase;
 
@@ -36,6 +42,12 @@ public class CommonFooterLinksSection extends TestBase{
 	@FindBy(xpath="//button[contains(., 'Subscribe')]")
 	WebElement subscribeButton;
 	
+	@FindBy(xpath="//*[@id=\"newsletter-error\"]")
+	WebElement newsLetterFieldBlankError;
+	
+	@FindBy(xpath="//*[@id=\"maincontent\"]/div[2]/div[2]/div/div/div")
+	WebElement subscriptionSuccessBanner;
+	
 	public WriteForUsPage writeForUsPageLand() {
 		writeForUsLink.click();
 		return new WriteForUsPage();
@@ -64,5 +76,20 @@ public class CommonFooterLinksSection extends TestBase{
 	public ContactUsPage contactUsPageLand() {
 		contactUsLink.click();
 		return new ContactUsPage();
+	}
+	
+	public void newsLetterSubscription(String email) {
+		emailFieldForNewsLetterUpdates.sendKeys(email);
+		subscribeButton.click();
+//		System.out.println("keys sent and clicked");
+		
+		if (emailFieldForNewsLetterUpdates.getAttribute("value").isEmpty()) {
+			Assert.assertTrue(newsLetterFieldBlankError.isDisplayed());
+		}
+		
+		else {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='maincontent']/div[2]/div[2]/div/div/div"))).isDisplayed();
+		}
 	}
 }
