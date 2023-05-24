@@ -45,8 +45,12 @@ public class CommonFooterLinksSection extends TestBase{
 	@FindBy(xpath="//*[@id=\"newsletter-error\"]")
 	WebElement newsLetterFieldBlankError;
 	
+	@FindBy(xpath="//*[@id=\"newsletter-error\"]")
+	WebElement invalidEmailFilledError;
+	
 	@FindBy(xpath="//*[@id=\"maincontent\"]/div[2]/div[2]/div/div/div")
 	WebElement subscriptionSuccessBanner;
+	
 	
 	public WriteForUsPage writeForUsPageLand() {
 		writeForUsLink.click();
@@ -79,17 +83,22 @@ public class CommonFooterLinksSection extends TestBase{
 	}
 	
 	public void newsLetterSubscription(String email) {
-		emailFieldForNewsLetterUpdates.sendKeys(email);
-		subscribeButton.click();
-//		System.out.println("keys sent and clicked");
 		
-		if (emailFieldForNewsLetterUpdates.getAttribute("value").isEmpty()) {
-			Assert.assertTrue(newsLetterFieldBlankError.isDisplayed());
-		}
-		
-		else {
+		try {			
+			emailFieldForNewsLetterUpdates.sendKeys(email);
+			subscribeButton.click();
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='maincontent']/div[2]/div[2]/div/div/div"))).isDisplayed();
+//			System.out.println("keys sent and clicked");
+		}
+		
+		catch (Exception e) {
+			if (emailFieldForNewsLetterUpdates.getAttribute("value").isEmpty()) {
+				Assert.assertTrue(newsLetterFieldBlankError.isDisplayed());
+			}
+			else {
+				Assert.assertTrue(invalidEmailFilledError.isDisplayed());
+			}
 		}
 	}
 }
