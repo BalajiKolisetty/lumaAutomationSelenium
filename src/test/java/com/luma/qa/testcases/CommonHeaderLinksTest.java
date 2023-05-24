@@ -6,10 +6,12 @@ import org.testng.annotations.Test;
 
 import com.luma.qa.base.TestBase;
 import com.luma.qa.pages.CommonHeaderLinksSection;
+import com.luma.qa.pages.HomePage;
 
 public class CommonHeaderLinksTest extends TestBase {
 	
 	CommonHeaderLinksSection commonHeaderLinksSection;
+	HomePage homePage;
 	
 	public CommonHeaderLinksTest() {
 		super();
@@ -19,11 +21,7 @@ public class CommonHeaderLinksTest extends TestBase {
 	public void setUp() {
 		initialization();
 		commonHeaderLinksSection = new CommonHeaderLinksSection();
-	}
-	
-	@Test
-	public void miniCartTest() {
-		commonHeaderLinksSection.miniCartIconBasicValidation();
+		homePage = new HomePage();
 	}
 	
 	@Test
