@@ -35,12 +35,27 @@ public class HomePageTest extends TestBase{
 	}
 	
 	@Test
-	public void miniCartTest() {
-		commonmHeaderLinksSection.miniCartIconBasicValidation();
+	public void miniCartProductsPresentTest() {
+		homePage.miniCartValidation();
+	}
+	
+	@Test
+	public void productDeleteFromMinicartTest() {
+		homePage.productDeleteFromMinicart();
+	}
+	
+	@Test
+	public void productUnDeleteFromMinicartTest() {
+		homePage.productUntDeleteFromMinicart();
+	}
+	
+	@Test
+	public void cartPageLandTest() {
+		homePage.cartPageLand();
 	}
 	
 	@AfterMethod
 	public void tearDown() {
-//		driver.quit();
+		driver.quit();
 	}
 }
