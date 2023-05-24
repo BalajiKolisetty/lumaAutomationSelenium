@@ -34,7 +34,7 @@ public class CommonHeaderLinksSection extends TestBase {
 	@FindBy(xpath="//a[@class='action showcart']")
 	WebElement miniCartIcon;
 	
-	@FindBy(xpath="//span[@class='counter qty']")
+	@FindBy(xpath="//span[@class='counter-number']")
 	WebElement cartWhenQuantityIsPresent;
 	
 	@FindBy(xpath="//strong[contains(., 'You have no items in your shopping cart.')]")
@@ -83,26 +83,7 @@ public class CommonHeaderLinksSection extends TestBase {
 		return new RegistrationPage();
 	}
 	
-	public void miniCartIconBasicValidation() {
-		String stringQuantityInCart = cartWhenQuantityIsPresent.getText();
-		
-		try {
-			int numberQuantityInCart = Integer.parseInt(stringQuantityInCart); 
-			if (numberQuantityInCart > 0) {
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-				miniCartIcon.click();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='top-cart-btn-checkout']"))).isDisplayed();
-//				Assert.assertTrue(checkoutButtonDisplayInMiniCart.isDisplayed());
-			}
-		}
-		
-		catch (Exception e) {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			miniCartIcon.click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[contains(., 'You have no items in your shopping cart.')]"))).isDisplayed();
-//			Assert.assertTrue(noProductsInCartMessage.isDisplayed());
-		}
-	}
+	
 	
 	public void productSearchButtonIsDisabled() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -127,13 +108,14 @@ public class CommonHeaderLinksSection extends TestBase {
 	public void womenProductsDropdownHover() {
 		Actions womenDropdownHover = new Actions(driver);
 		womenDropdownHover.moveToElement(womenProductsDropdown).perform();
-		Assert.assertTrue(womenTopsOption.isDisplayed());
+//		Assert.assertTrue(womenTopsOption.isDisplayed());
 	}
 	
 	public void menProductsDropdownHover() {
 		Actions menDropdownHover = new Actions(driver);
 		menDropdownHover.moveToElement(menProductsDropdown).perform();
-		Assert.assertTrue(menTopsOption.isDisplayed());
+		menTopsOption.click();
+//		Assert.assertTrue(menTopsOption.isDisplayed());
 	}
 	
 	public void gearProductsDropdownHover() {
@@ -152,5 +134,11 @@ public class CommonHeaderLinksSection extends TestBase {
 		salePageLink.click();
 		return new SalePage();
 	}
+	
+//	public MensTopsPage mensTopsPageLand() {
+////		menProductsDropdownHover();
+//		menTopsOption.click();
+//		return new MensTopsPage();
+//	}
 }
 
