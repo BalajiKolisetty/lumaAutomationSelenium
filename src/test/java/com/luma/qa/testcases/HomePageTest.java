@@ -54,6 +54,16 @@ public class HomePageTest extends TestBase{
 		homePage.cartPageLand();
 	}
 	
+	@Test
+	public void quantityUpdateFromMiniCartTest() {
+		homePage.updateFromMiniCart("11");
+	}
+	
+	@Test
+	public void myAccountPageLand() {
+		homePage.myAccountPageLand();
+	}
+	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
