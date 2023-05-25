@@ -41,6 +41,18 @@ public class HomePage extends TestBase {
 	@FindBy(xpath="//span[contains(., 'View and Edit Cart')]")
 	WebElement cartPageLandLink;
 	
+	@FindBy(xpath="//input[@id='cart-item-170216-qty']")
+	WebElement quantityEnterField;
+	
+	@FindBy(xpath="//span[contains(., 'Update')]")
+	WebElement quantityUpdateFromMinicartButton;
+	
+	@FindBy(xpath="//span[contains(., 'Change')]")
+	WebElement profileDropdown;
+	
+	@FindBy(xpath="//a[contains(., 'My Account')]")
+	WebElement myAccountPageLink;
+	
 	public void welcomeMessageIsDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(., 'Welcome')]"))).isDisplayed();
@@ -128,4 +140,33 @@ public class HomePage extends TestBase {
 		
 		return new CartPage();
 	}
+	
+	public void updateFromMiniCart(String newQuantity) {
+		welcomeMessageIsDisplayed();
+		commonHeaderLinksSection.miniCartIcon.click();
+		
+		String stringQuantityInMiniCart = quantityEnterField.getText();
+		int integerQuantityInMiniCart = Integer.parseInt(stringQuantityInMiniCart);
+		
+		if (Integer.parseInt(newQuantity) == integerQuantityInMiniCart) {
+			quantityEnterField.sendKeys(String.valueOf(newQuantity));
+			Assert.assertFalse(quantityUpdateFromMinicartButton.isDisplayed());
+		}
+		
+		else if ((Integer.parseInt(newQuantity) <= integerQuantityInMiniCart) || (Integer.parseInt(newQuantity) >= integerQuantityInMiniCart)) {
+			quantityEnterField.sendKeys(String.valueOf(newQuantity));
+			WebDriverWait waitForUpdateButton = new WebDriverWait(driver, Duration.ofSeconds(10));
+			waitForUpdateButton.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(., 'Update')]")));
+			quantityUpdateFromMinicartButton.click();
+//			Assert.assertTrue(quantityUpdateFromMinicartButton.isDisplayed());
+		}
+	}
+	
+	public MyAccountPage myAccountPageLand() {
+		welcomeMessageIsDisplayed();
+		profileDropdown.click();
+		myAccountPageLink.click();
+		return new MyAccountPage();
+	}
 }
+
