@@ -16,6 +16,9 @@ public class CartPage extends TestBase {
 	@FindBy(xpath="//span[contains(., 'Shopping Cart')]")
 	WebElement cartPageHeading;
 	
+	@FindBy(xpath="//a[contains(., 'Check Out with Multiple Addresses')]")
+	WebElement multipleAddressCheckoutLink;
+	
 	public void cartPageHeadingDisplay() {
 		Assert.assertTrue(cartPageHeading.isDisplayed());
 	}
