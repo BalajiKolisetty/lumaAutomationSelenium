@@ -83,8 +83,6 @@ public class CommonHeaderLinksSection extends TestBase {
 		return new RegistrationPage();
 	}
 	
-	
-	
 	public void productSearchButtonIsDisabled() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		if (productSearchField.getAttribute("value").isEmpty()) {
@@ -134,11 +132,5 @@ public class CommonHeaderLinksSection extends TestBase {
 		salePageLink.click();
 		return new SalePage();
 	}
-	
-//	public MensTopsPage mensTopsPageLand() {
-////		menProductsDropdownHover();
-//		menTopsOption.click();
-//		return new MensTopsPage();
-//	}
 }
 
