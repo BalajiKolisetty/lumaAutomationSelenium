@@ -16,9 +16,26 @@ public class MyAccountPage extends TestBase{
 	@FindBy(xpath="//span[contains(., 'My Account')]")
 	WebElement myAccountPageHeading;
 	
+	@FindBy(xpath="//a[@href='https://magento.softwaretestingboard.com/newsletter/manage/']")
+	WebElement newsLetterSubscriptionEditLink;
+	
+	@FindBy(xpath="//a[contains(., 'Newsletter Subscriptions')]")
+	WebElement newsLetterPageLink;
+	
+	@FindBy(xpath="//a[contains(., 'Account Information')]")
+	WebElement accountInformationPageLink;
+	
 	public void pageHeadingIsDisplayed() {
 		Assert.assertTrue(myAccountPageHeading.isDisplayed());
 	}
 	
+	public NewsLetterSubscriptionPage newsLetterPageLand() {
+		newsLetterSubscriptionEditLink.click();
+		return new NewsLetterSubscriptionPage();
+	}
 	
+	public AccountInformationPage accountInfoPageLand() {
+		accountInformationPageLink.click();
+		return new AccountInformationPage();
+	}
 }
