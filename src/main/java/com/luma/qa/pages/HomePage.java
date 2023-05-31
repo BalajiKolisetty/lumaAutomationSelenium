@@ -53,6 +53,9 @@ public class HomePage extends TestBase {
 	@FindBy(xpath="//a[contains(., 'My Account')]")
 	WebElement myAccountPageLink;
 	
+	@FindBy(xpath="//a[contains(., 'Sign Out')]")
+	WebElement logoutButton;
+	
 	public void welcomeMessageIsDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(., 'Welcome')]"))).isDisplayed();
@@ -167,6 +170,14 @@ public class HomePage extends TestBase {
 		profileDropdown.click();
 		myAccountPageLink.click();
 		return new MyAccountPage();
+	}
+	
+	public CommonHeaderLinksSection logOut() {
+		profileDropdown.click();
+		logoutButton.click();
+		WebDriverWait waitForHomePageLand = new WebDriverWait(driver, Duration.ofSeconds(15));
+		waitForHomePageLand.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Sign In')]"))).isDisplayed();
+		return new CommonHeaderLinksSection();
 	}
 }
 

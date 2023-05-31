@@ -64,6 +64,11 @@ public class HomePageTest extends TestBase{
 		homePage.myAccountPageLand();
 	}
 	
+	@Test
+	public void logoutTest() {
+		homePage.logOut();
+	}
+	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
