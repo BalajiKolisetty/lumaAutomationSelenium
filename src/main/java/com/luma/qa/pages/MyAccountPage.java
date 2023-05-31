@@ -25,6 +25,9 @@ public class MyAccountPage extends TestBase{
 	@FindBy(xpath="//a[contains(., 'Account Information')]")
 	WebElement accountInformationPageLink;
 	
+	@FindBy(xpath="//a[contains(., 'Address Book')]")
+	WebElement addressBookPageLink;
+	
 	public void pageHeadingIsDisplayed() {
 		Assert.assertTrue(myAccountPageHeading.isDisplayed());
 	}
@@ -37,5 +40,10 @@ public class MyAccountPage extends TestBase{
 	public AccountInformationPage accountInfoPageLand() {
 		accountInformationPageLink.click();
 		return new AccountInformationPage();
+	}
+	
+	public AddNewAddressPage addressPageLand() {
+		addressBookPageLink.click();
+		return new AddNewAddressPage();
 	}
 }
