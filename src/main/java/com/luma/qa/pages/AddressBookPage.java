@@ -16,10 +16,15 @@ public class AddressBookPage extends TestBase {
 	@FindBy(xpath="//span[contains(., 'Address Book')]")
 	WebElement pageHeading;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[contains(., 'Add New Address')]")
 	WebElement addNewAddressPageButton;
 	
 	public void pageHeadingIsDisplayed() {
 		Assert.assertTrue(pageHeading.isDisplayed());
+	}
+	
+	public AddNewAddressPage addNewAddressPageLand() {
+		addNewAddressPageButton.click();
+		return new AddNewAddressPage();
 	}
 }

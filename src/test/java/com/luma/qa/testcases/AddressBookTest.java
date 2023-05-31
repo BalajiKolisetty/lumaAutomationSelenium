@@ -43,6 +43,11 @@ public class AddressBookTest extends TestBase {
 		addressBookPage.pageHeadingIsDisplayed();
 	}
 	
+	@Test
+	public void addNewAddressPageLand() {
+		addressBookPage.addNewAddressPageLand();
+	}
+	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
