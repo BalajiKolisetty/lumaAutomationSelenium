@@ -5,7 +5,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.luma.qa.base.TestBase;
-import com.luma.qa.pages.AddNewAddressPage;
 import com.luma.qa.pages.AddressBookPage;
 import com.luma.qa.pages.CommonHeaderLinksSection;
 import com.luma.qa.pages.HomePage;
