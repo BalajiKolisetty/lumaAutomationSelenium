@@ -19,8 +19,16 @@ public class CartPage extends TestBase {
 	@FindBy(xpath="//a[contains(., 'Check Out with Multiple Addresses')]")
 	WebElement multipleAddressCheckoutLink;
 	
+	@FindBy(xpath="//*[@id=\"maincontent\"]/div[3]/div/div[2]/div[1]/ul/li[1]/button")
+	WebElement checkoutButton;
+	
 	public void cartPageHeadingDisplay() {
 		Assert.assertTrue(cartPageHeading.isDisplayed());
+	}
+	
+	public CheckoutPage checkoutPageLand() {
+		checkoutButton.click();
+		return new CheckoutPage();
 	}
 
 }
