@@ -1,16 +1,17 @@
 package com.luma.qa.testcases;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.luma.qa.base.TestBase;
 import com.luma.qa.pages.CommonHeaderLinksSection;
+import com.luma.qa.pages.RegistrationPage;
 
 public class RegistrationPageTest extends TestBase {
 	
 	CommonHeaderLinksSection commonHeaderLinksSection;
+	RegistrationPage registrationPage;
 	
 	public RegistrationPageTest() {
 		super();
@@ -21,12 +22,17 @@ public class RegistrationPageTest extends TestBase {
 		initialization();
 		commonHeaderLinksSection = new CommonHeaderLinksSection();
 		commonHeaderLinksSection.registrationPageLand();
+		registrationPage = new RegistrationPage();
 	}
 	
 	@Test
-	public void pageTitleTest() {
-		String actualPageTitle = driver.getTitle();
-		Assert.assertEquals(actualPageTitle, "Create New Customer Account", "Registration page titles doesn't match");
+	public void pageHeadingTest() {
+		registrationPage.pageHeadingIsDisplayed();
+	}
+	
+	@Test
+	public void registrationTest() {
+		registrationPage.registration("Balaji", "K", "virat@kohli.com", "Balaji@", "Balaji8@");
 	}
 	
 	@AfterMethod
