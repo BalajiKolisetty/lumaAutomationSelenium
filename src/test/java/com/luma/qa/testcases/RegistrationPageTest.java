@@ -32,7 +32,7 @@ public class RegistrationPageTest extends TestBase {
 	
 	@Test
 	public void registrationTest() {
-		registrationPage.registration("Balaji", "K", "virat@kohli.com", "Balaji@", "Balaji8@");
+		registrationPage.registration("Balaji", "K", "virat.com", "Balaji@", "Balaji8@");
 	}
 	
 	@AfterMethod

@@ -67,6 +67,9 @@ public class RegistrationPage extends TestBase {
 	@FindBy(xpath="//div[@class='mage-error']")
 	WebElement passwordComplexityError;
 	
+	@FindBy(xpath="//*[@id=\"email_address-error\"]")
+	WebElement emailInvalidError;
+	
 	public void pageHeadingIsDisplayed() {
 		Assert.assertTrue(pageHeading.isDisplayed());
 	}
@@ -111,7 +114,7 @@ public class RegistrationPage extends TestBase {
 //				System.out.println("Confirm password is empty");
 			}
 			
-			if (!passwordField.getAttribute("value").equals(confirmPasswordField.getAttribute("va;ue"))) {
+			if (!passwordField.getAttribute("value").equals(confirmPasswordField.getAttribute("value"))) {
 				Assert.assertTrue(passwordsNotmatchError.isDisplayed());
 //				System.out.println("Passwords don't match");
 			}
@@ -119,6 +122,11 @@ public class RegistrationPage extends TestBase {
 			if (passwordStrengthIndicator.getText().equals("Weak")) {
 				Assert.assertTrue(passwordComplexityError.isDisplayed());
 //				System.out.println("Password complexity error");
+			}
+			
+			if (emailIdField.getAttribute("value").equals("Email")) {
+				Assert.assertTrue(emailInvalidError.isDisplayed());
+//				System.out.println("Email is invalid");
 			}
 		}
 	}
