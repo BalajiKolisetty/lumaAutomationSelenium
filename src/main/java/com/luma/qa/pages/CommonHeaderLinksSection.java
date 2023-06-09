@@ -98,18 +98,25 @@ public class CommonHeaderLinksSection extends TestBase {
 		Assert.assertTrue(productSearchButton.isDisplayed());
 	}
 	
+	public void dropdownChevronsLoaded() {
+		WebDriverWait waitForDropdownsToDisplay = new WebDriverWait(driver, Duration.ofSeconds(10));
+		waitForDropdownsToDisplay.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='ui-menu-icon ui-icon ui-icon-carat-1-e']"))).isDisplayed();
+	}
+	
 	public WhatsNewPage whatsNewPageLand() {
 		whatsNewPageLink.click();
 		return new WhatsNewPage();
 	}
 	
 	public void womenProductsDropdownHover() {
+		dropdownChevronsLoaded();
 		Actions womenDropdownHover = new Actions(driver);
 		womenDropdownHover.moveToElement(womenProductsDropdown).perform();
 //		Assert.assertTrue(womenTopsOption.isDisplayed());
 	}
 	
 	public void menProductsDropdownHover() {
+		dropdownChevronsLoaded();
 		Actions menDropdownHover = new Actions(driver);
 		menDropdownHover.moveToElement(menProductsDropdown).perform();
 		menTopsOption.click();
@@ -117,12 +124,14 @@ public class CommonHeaderLinksSection extends TestBase {
 	}
 	
 	public void gearProductsDropdownHover() {
+		dropdownChevronsLoaded();
 		Actions gearDropdownHover = new Actions(driver);
 		gearDropdownHover.moveToElement(gearProductsDropdown).perform();
 		Assert.assertTrue(bagsOption.isDisplayed());
 	}
 	
 	public void trainingProductsDropdownHover() {
+		dropdownChevronsLoaded();
 		Actions trainingDropdownHover = new Actions(driver);
 		trainingDropdownHover.moveToElement(trainingDropdown).perform();
 		Assert.assertTrue(videoDownloadOption.isDisplayed());
